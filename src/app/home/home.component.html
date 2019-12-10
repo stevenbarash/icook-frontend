@@ -1,0 +1,28 @@
+<div class="container">
+  <form>
+    <div class="input-field">
+      <input #searchBox type="text" placeholder="Search" />
+      <button class="btn" (click)="getResults()">
+        🔎
+      </button>
+    </div>
+  </form>
+  <a href="/newRecipe" class="waves-effect waves-light btn new-recipe-button">
+    <span>New Recipe<i class="material-icons">add</i></span>
+  </a>
+</div>
+
+<div class="recipe-squares col">
+  <h1 #errText></h1>
+  <!-- <mat-spinner *ngIf="recipes.length == 0"> </mat-spinner> -->
+
+  <app-recipe-square
+    *ngFor="let recipe of recipes"
+    [_id]="recipe._id"
+    [name]="recipe.name"
+    [image]="recipe.image"
+    [userId]="recipe.userId"
+    [thumbsUp]="recipe.thumbsUp"
+    [thumbsDown]="recipe.thumbsDown"
+  ></app-recipe-square>
+</div>

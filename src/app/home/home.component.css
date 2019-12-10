@@ -1,0 +1,27 @@
+.recipe-squares {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.input-field {
+  display: flex;
+}
+
+.new-recipe-button {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-self: center;
+  width: 30%;
+}

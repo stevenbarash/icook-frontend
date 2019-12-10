@@ -1,0 +1,32 @@
+<!-- <li *ngFor="let recipe of recipes">
+  <h2>{{ recipe.name }}</h2>
+  <img src="{{ recipe.imagePath }}" />
+</li> -->
+
+<div class="col">
+  <div class="card">
+    <a href="/recipe/{{ _id }}">
+      <div class="card-image">
+        <img src="{{ image }}" />
+        <span class="card-title">{{ name }}</span>
+        <a class="btn-floating halfway-fab waves-effect waves-light red"
+          ><i class="material-icons">thumb  s-up</i></a
+        >
+        <a class="btn-floating halfway-fab waves-effect waves-light red"
+          ><i class="material-icons">thumbs-down</i></a
+        >
+      </div>
+    </a>
+    <div class="card-content">
+      <p>
+        By: <a href="/user/{{ userId }}">{{ userId }}</a>
+      </p>
+    </div>
+
+    <div class="card-action">
+      <button class="btn-small" (click)="addThumbsUp()">👍</button>
+      <h6>{{ likes }}</h6>
+      <button class="btn-small" (click)="addThumbsDown()">👎</button>
+    </div>
+  </div>
+</div>

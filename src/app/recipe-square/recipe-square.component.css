@@ -1,0 +1,31 @@
+.card-image {
+  /* height: 50%;
+  width: 80%; */
+}
+.card {
+  /* width: %; */
+  padding: 20px;
+  margin: 10px;
+}
+
+.card-content {
+  display: flex;
+}
+.card-action {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+.card-action .btn-small {
+  margin: 10px;
+}
+.card-content div {
+  display: flex;
+  flex: 2;
+}
+
+/* card{
+    
+} */

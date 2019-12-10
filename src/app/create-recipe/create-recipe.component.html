@@ -1,0 +1,43 @@
+<div class="container">
+  <h5>Recipe Name</h5>
+  <input #nameInput type="text" placeholder="Recipe Name" />
+
+  <h4>Intro</h4>
+  <textarea
+    #introInput
+    placeholder="Tell us more about your recipe..."
+  ></textarea>
+
+  <h4>Ingredients</h4>
+  <div *ngFor="let ingredient of newRecipe.ingredients">
+    <ul>
+      <li>{{ ingredient.ingredient }}: {{ ingredient.quantity }}</li>
+    </ul>
+  </div>
+  <div class="ingredient-input-section">
+    <input #ingredientInput placeholder="Search for ingredient..." />
+    <input #ingredientQuantityInput placeholder="Enter quantity..." />
+  </div>
+  <button (click)="addIngredient()">Add Ingredient</button>
+
+  <h4>Directions</h4>
+  <ol>
+    <li *ngFor="let direction of newRecipe.directions">
+      {{ direction.direction }}
+    </li>
+  </ol>
+  <input #directionInput placeholder="Add direction..." />
+  <button (click)="addDirection()">Add Direction</button>
+
+  <h4>Servings</h4>
+  <input #servingsInput type="number" />
+  <h4>Calories</h4>
+  <input #caloriesInput type="number" />
+
+  <a
+    class="btn-large"
+    (click)="saveRecipe()"
+    href="/recipe/{{ this.newRecipe._id }}"
+    >SUBMIT</a
+  >
+</div>

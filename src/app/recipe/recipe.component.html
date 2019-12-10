@@ -1,0 +1,47 @@
+<section class="container">
+  <div class="left-half">
+    <img src="{{ image }}" />
+  </div>
+  <div class="right-half">
+    <article>
+      <!-- <ul id="NavigationPane">
+        <li class="NP_li">
+          <a class="NP_li_a Current" href="index.html">Home</a>
+        </li>
+        <li class="NP_li"><a class="NP_li_a" href="search.html">Search</a></li>
+        <li class="NP_li"><a class="NP_li_a" href="add.html">Add</a></li>
+        <li style="float:right" class="NP_li Last">
+          <a class="NP_li_a" href="login.html">Log In</a>
+        </li>
+      </ul> -->
+      <br />
+      <br />
+      <!-- Insert recipe name here -->
+      <h2>{{ name }}</h2>
+
+      <p [innerHTML]="intro"></p>
+      <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      <!-- Insert ingredients here -->
+
+      <h4>
+        Ingredients
+      </h4>
+      <ul>
+        <li *ngFor="let ingredient of ingredients">
+          {{ ingredient.ingredient }}
+        </li>
+      </ul>
+      <!-- Insert directions here -->
+      <h4>
+        Directions
+      </h4>
+      <ol>
+        <li *ngFor="let direction of directions">
+          {{ direction.direction }}
+        </li>
+      </ol>
+      <!-- Insert calories here -->
+      <h2 align="left">Calories: ???</h2>
+    </article>
+  </div>
+</section>

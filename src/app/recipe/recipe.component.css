@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+section,
+div {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+section {
+  width: 100%;
+}
+
+article {
+  position: relative;
+  /*top: 50%;
+  left: 50%;
+  padding: 1rem;
+  
+  transform: translate(-50%, -50%);*/
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin: 0 0 0.75rem 0;
+}
+
+#NavigationPane {
+  list-style-type: none;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Navigation pane bullets formatting */
+.NP_li {
+  float: left;
+  border-right: 1px solid #000000;
+}
+
+/* Navigation pane link formatting */
+.NP_li_a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 8px 16px;
+}
+
+/* Navigation pane bullets formatting.  Last bulled doesn't need a right border. */
+.Last {
+  border-right: none;
+}
+
+/* Navigation pane bullets hover formatting */
+.NP_li_a:hover {
+  background-color: #000000;
+  color: white;
+}
+
+/* Navigation pane bullets current page formatting */
+.Current {
+  background-color: #4d4d4d;
+  color: white;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Pattern styles */
+.left-half {
+
+  background-size: cover;
+  float: left;
+  width: 50%;
+}
+.right-half {
+  padding-left: 5rem;
+  float: left;
+  width: 50%;
+}
