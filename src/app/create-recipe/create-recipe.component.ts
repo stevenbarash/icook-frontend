@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Recipe } from "../models/Recipe";
 
+declare const require: any;
 var ObjectID = require("bson-objectid");
 
 @Component({
