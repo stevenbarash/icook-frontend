@@ -6,35 +6,63 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./recipe-square.component.css"]
 })
 export class RecipeSquareComponent implements OnInit {
+  //   [name]="recipe.name"
+  // [image]="recipe.image"
+  // [userId]="recipe.userId"
+  // [thumbsUp]="recipe.thumbsUp"
+  // [thumbsDown]="recipe.thumbsDown"
+
   // recipes = MOCKRECIPES;
   @Input() _id: string;
-  @Input() name: string;
-  @Input() image: string;
-  @Input() userId: string;
-  @Input() thumbsUp: object[];
-  @Input() thumbsDown: object[];
+  name: string;
+  image: string;
+  userId: string;
+  thumbsUp: object[];
+  thumbsDown: object[];
   likes = 0;
+  isCurrentUser: Boolean = localStorage.getItem("userId") == this.userId;
+
   constructor() {}
 
   addThumbsUp() {
-    //TODO add current session user
     fetch(
       "http://localhost:3000/api/recipe/" +
         this._id +
-        "/thumbsUp/5deb662f1c9d440000844437",
+        "/thumbsUp/" +
+        localStorage.userId,
       { method: "PATCH" }
     );
+    this.likes = this.thumbsUp.length - this.thumbsDown.length;
+    location.reload();
+  }
+  deleteRecipe() {
+    fetch("http://localhost:3000/recipe/" + this._id, { method: "DELETE" });
+    location.reload();
   }
   addThumbsDown() {
-    //TODO add current session user
     fetch(
       "http://localhost:3000/api/recipe/" +
         this._id +
-        "/thumbsDown/5deb662f1c9d440000844437"
+        "/thumbsDown/" +
+        localStorage.userId,
+      { method: "PATCH" }
     );
+    this.likes = this.thumbsUp.length - this.thumbsDown.length;
+    location.reload();
+  }
+
+  async getRecipe() {
+    let res = await fetch("http://localhost:3000/api/recipe/" + this._id);
+    let data = await res.json();
+    return data;
   }
 
   ngOnInit() {
-    this.likes = this.thumbsUp.length - this.thumbsDown.length;
+    this.getRecipe().then(data => {
+      this.name = data.data.name;
+      this.image = data.data.image;
+      this.userId = data.data.userId;
+      this.likes = data.data.thumbsUp.length - data.data.thumbsDown.length;
+    });
   }
 }

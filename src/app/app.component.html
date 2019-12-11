@@ -2,8 +2,32 @@
   <div class="nav-wrapper container">
     <a routerLink="/" routerLinkActive="router-link-active"><b>iCook</b></a>
 
-    <a routerLink="/login" routerLinkActive="router-link-active">Login</a>
-    <a routerLink="/user/1" routerLinkActive="router-link-active">Profile</a>
+    <a
+      *ngIf="isLoggedIn"
+      routerLink="/login"
+      routerLinkActive="router-link-active"
+      >Login</a
+    >
+    <a
+      *ngIf="!isLoggedIn"
+      routerLink="/signup"
+      routerLinkActive="router-link-active"
+      >Sign Up</a
+    >
+    <a
+      class="welcome"
+      *ngIf="!isLoggedIn"
+      routerLink="/user/{{ currentUser }}"
+      routerLinkActive="router-link-active"
+      >Profile</a
+    >
+    <a *ngIf="!isLoggedIn" (click)="logout()" routerLink="/login">Log Out</a>
+    <a
+      class="new-recipe"
+      routerLink="/newRecipe"
+      routerLinkActive="router-link-active"
+      >New Recipe</a
+    >
   </div>
 </nav>
 <router-outlet></router-outlet>

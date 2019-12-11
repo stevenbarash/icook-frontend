@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { User } from "../models/User";
+
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-user",
@@ -8,18 +9,40 @@ import { User } from "../models/User";
   styleUrls: ["./user.component.css"]
 })
 export class UserComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
+  userId: string;
+  email: string;
+  recipes: object[];
+  async getUserInfo() {
+    let res = await fetch(
+      "http://localhost:3000/api/user/" + localStorage.getItem("userId")
+    );
+    let data = await res.json();
+    return data;
+  }
+
+  async getUserInfoAsync() {
+    // var res = await fetch("http://localhost:3000");
+    var query = localStorage.getItem("userId");
+
+    let res = await fetch("http://localhost:3000/api/user/" + query);
+    var data = res.json();
+
+    return data;
+
+    // let data = res.json();
+
+    // this.recipes = data;
+  }
 
   ngOnInit() {
-    var user = "test";
-    console.log(this.route.snapshot.paramMap.get("id"));
-    fetch("");
+    if (localStorage.getItem("userId") == null) {
+      this.router.navigate(["/login"]);
+    }
+    this.userId = localStorage.getItem("userId");
+    this.getUserInfoAsync().then(data => {
+      this.recipes = data.data.recipes;
+    });
+    console.log(this.recipes);
   }
-  user: User = {
-    id: "MyName",
-    profilePic:
-      "https://images-na.ssl-images-amazon.com/images/I/81WzJccLNQL._SX425_.jpg",
-    bio: "test",
-    recipes: "test"
-  };
 }

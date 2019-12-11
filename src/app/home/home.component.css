@@ -7,6 +7,7 @@
   justify-content: center;
   justify-items: center;
 }
+
 body {
   height: 100%;
   width: 100%;
@@ -24,4 +25,7 @@ body {
   align-content: center;
   justify-self: center;
   width: 30%;
+}
+
+@media only screen and (max-width: 600px) {
 }

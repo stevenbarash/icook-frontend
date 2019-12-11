@@ -36,15 +36,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getAllRecipes().then(data => {
-      this.recipes = data;
+      this.recipes = data.data;
     });
     if (this.recipes.length == 0) {
       this.errText.nativeElement.innerHTML = "404:Error retrieving recipes...";
     } else {
       this.errText.nativeElement.innerHTML = "";
     }
+    // this.recipes.sort((a, b) => {
+    //   return a.thumbsUp.count - b.thumbsDown.count;
+    // });
 
-    console.log("poo" + this.recipes);
+    // console.log("poo" + this.recipes);
   }
   getResults() {
     this.getResultsAsync().then(data => {

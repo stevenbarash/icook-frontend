@@ -1,16 +1,13 @@
 <div class="container" ngTemplateOutlet>
   <div class="col s12">
-    <img src="{{ user.profilePic }}" />
-
-    <h2>{{ user.id }}</h2>
+    <h4>User ID</h4>
+    <h3>{{ userId }}</h3>
   </div>
 
-  <div class="col s6">
-    <h4>Bio</h4>
-    <p>{{ user.bio }}</p>
-  </div>
-  <h4>Recipes</h4>
-  todo: add functionality to recipe square component where id can be fed in as a
-  prop and a recipe is outputted
-  <app-recipe-square></app-recipe-square>
+  <h4>My recipes</h4>
+
+  <app-recipe-square
+    *ngFor="let recipe of recipes"
+    [_id]="recipe._id"
+  ></app-recipe-square>
 </div>

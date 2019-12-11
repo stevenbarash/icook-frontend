@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Recipe } from "../models/Recipe";
+import { Router } from "@angular/router";
 
 declare const require: any;
 var ObjectID = require("bson-objectid");
@@ -49,15 +50,15 @@ export class CreateRecipeComponent implements OnInit {
     this.directionInput.nativeElement.value = "";
   }
 
-  constructor() {}
+  constructor(private router: Router) {}
   saveRecipe() {
     this.newRecipe.name = this.nameInput.nativeElement.value;
     this.newRecipe.servings = this.servingsInput.nativeElement.value;
     this.newRecipe.intro = this.introInput.nativeElement.value;
     this.newRecipe.image =
       "https://pitt.box.com/shared/static/1x19swwtrs2em9o75j02e8w9c8nkqi3l.png";
-    //TODO change to actual ID of currently logged in user
-    this.newRecipe.userId = "5deb662f1c9d440000844437";
+
+    this.newRecipe.userId = localStorage.getItem("userId");
 
     this.newRecipe.nutrition = {
       calories: this.caloriesInput.nativeElement.value
@@ -80,5 +81,8 @@ export class CreateRecipeComponent implements OnInit {
 
   ngOnInit() {
     this.newRecipe._id = ObjectID();
+    if (localStorage.getItem("userId") == null) {
+      this.router.navigate(["/"]);
+    }
   }
 }

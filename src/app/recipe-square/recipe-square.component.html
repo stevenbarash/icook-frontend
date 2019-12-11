@@ -9,12 +9,6 @@
       <div class="card-image">
         <img src="{{ image }}" />
         <span class="card-title">{{ name }}</span>
-        <a class="btn-floating halfway-fab waves-effect waves-light red"
-          ><i class="material-icons">thumb  s-up</i></a
-        >
-        <a class="btn-floating halfway-fab waves-effect waves-light red"
-          ><i class="material-icons">thumbs-down</i></a
-        >
       </div>
     </a>
     <div class="card-content">
@@ -28,5 +22,8 @@
       <h6>{{ likes }}</h6>
       <button class="btn-small" (click)="addThumbsDown()">👎</button>
     </div>
+    <!-- <button *ngIf="isCurrentUser" (click)="deleteRecipe()" class="btn red">
+      Delete
+    </button> -->
   </div>
 </div>

@@ -18,7 +18,7 @@
     <input #ingredientInput placeholder="Search for ingredient..." />
     <input #ingredientQuantityInput placeholder="Enter quantity..." />
   </div>
-  <button (click)="addIngredient()">Add Ingredient</button>
+  <a class="btn" (click)="addIngredient()">Add Ingredient</a>
 
   <h4>Directions</h4>
   <ol>
@@ -27,7 +27,7 @@
     </li>
   </ol>
   <input #directionInput placeholder="Add direction..." />
-  <button (click)="addDirection()">Add Direction</button>
+  <a class="btn" (click)="addDirection()">Add Direction</a>
 
   <h4>Servings</h4>
   <input #servingsInput type="number" />
